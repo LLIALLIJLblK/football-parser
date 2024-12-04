@@ -62,12 +62,9 @@ async def get_user_data(http_client: aiohttp.ClientSession, slug: str) -> dict:
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
 
-
-    # Используем Selenium для загрузки страницы и ожидания загрузки всех изображений
     driver = webdriver.Chrome(options=options)
     driver.get(url)
 
-    
     body = driver.find_element(By.TAG_NAME, "body")
     for _ in range(5):  
         body.send_keys(Keys.PAGE_DOWN)
@@ -78,7 +75,6 @@ async def get_user_data(http_client: aiohttp.ClientSession, slug: str) -> dict:
         EC.presence_of_all_elements_located((By.TAG_NAME, "img"))
     )
 
-
     page_source = driver.page_source
     driver.quit()
 
@@ -86,11 +82,10 @@ async def get_user_data(http_client: aiohttp.ClientSession, slug: str) -> dict:
 
     user_data = get_clear_data(soup)
 
-    # Выводим данные в консоль
+
     for user in user_data:
         print(user)
 
-    # Сохраняем данные в файл JSON
 
 async def main():
     async with aiohttp.ClientSession() as session:
