@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "succer"
+version = "0.1.0"
+description = ""
+authors = ["Nikita Duzhnov <duzhnov.nikita55@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+aiohttp = "^3.11.9"
+asyncio = "^3.4.3"
+beautifulsoup4 = "^4.12.3"
+selenium = "^4.27.1"
+pyppeteer = "^2.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
